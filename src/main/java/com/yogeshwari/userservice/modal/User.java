@@ -6,10 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-@NoArgsConstructor
-@Setter
-@Data
-@Builder
+
 @Component
 public class User {
     private long id;
@@ -20,7 +17,6 @@ public class User {
     private String phoneNumber;
     private String role;
 
-    @Autowired
     private Vehicle vehicle;
 
 
@@ -56,6 +52,9 @@ public class User {
         return vehicle;
     }
 
+    public User(){
+
+    }
     public User(long id, String username, String password, String email, String name, String phoneNumber, String role, Vehicle vehicle) {
         this.id = id;
         this.username = username;

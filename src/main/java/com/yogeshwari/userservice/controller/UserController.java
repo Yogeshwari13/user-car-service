@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
+@CrossOrigin(origins="*")
 public class UserController {
     @Autowired
     UserService userService;
@@ -21,20 +22,20 @@ public class UserController {
         return new ResponseEntity<>( createdUser , HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user , long id) {
-        User updatedUser = userService.updateUser(user , id);
-        return new ResponseEntity<>(updatedUser , HttpStatus.OK);
-    }
+//    @PutMapping
+//    public ResponseEntity<User> updateUser(@RequestBody User user , long id) {
+//        User updatedUser = userService.updateUser(user , id);
+//        return new ResponseEntity<>(updatedUser , HttpStatus.OK);
+//    }
+//
+//    @DeleteMapping
+//    public ResponseEntity<User> deleteUser(long id) {
+//        User deletedUser = userService.deleteUser(id);
+//        return new ResponseEntity<>(deletedUser , HttpStatus.OK);
+//    }
 
-    @DeleteMapping
-    public ResponseEntity<User> deleteUser(long id) {
-        User deletedUser = userService.deleteUser(id);
-        return new ResponseEntity<>(deletedUser , HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<User> getUser(long id) {
+    @GetMapping("/getUser/{id}")
+    public ResponseEntity<User> getUser(@PathVariable long id) {
         User user = userService.getUserById(id);
         return new ResponseEntity<>(user , HttpStatus.OK);
     }
